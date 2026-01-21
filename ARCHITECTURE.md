@@ -47,8 +47,8 @@ This is a full-stack hierarchical menu management system built with React and Ex
 │  └──────────────────────────────────────────────────────┘   │
 │  ┌──────────────────────────────────────────────────────┐   │
 │  │              Data Storage Layer                       │   │
-│  │  ├─ In-Memory Map<id, MenuItem>  (Current)           │   │
-│  │  └─ Database Ready (Prisma ORM)                      │   │
+│  │  ├─ PostgreSQL Database                              │   │
+│  │  └─ Prisma ORM (v5.22.0)                             │   │
 │  └──────────────────────────────────────────────────────┘   │
 └─────────────────────────────────────────────────────────────┘
 ```
@@ -432,17 +432,17 @@ docker-compose.yml
 - **TypeScript**: Type safety for backend
 - **Zod**: Runtime validation, type inference
 
-### State Management: In-Memory
-- **Pros**: Simple, fast, great for demo
-- **Cons**: Single process, no persistence
-- **Migration**: Easy to Prisma + database
+### Database: PostgreSQL
+- **Pros**: Production-ready, ACID compliant, scalable
+- **Features**: Full persistence, advanced querying, indexing
+- **ORM**: Prisma for type-safe database access
 
 ## Future Enhancements
 
-### Phase 1: Database
-- Implement Prisma migrations
-- PostgreSQL integration
-- Data persistence
+### Phase 1: Database ✅
+- ✅ Prisma ORM configured
+- ✅ PostgreSQL integration
+- ✅ Data persistence ready
 
 ### Phase 2: Advanced Features
 - Search/filter functionality
