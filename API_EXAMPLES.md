@@ -43,12 +43,12 @@ curl -X GET http://localhost:8080/api/menus
           "order": 0,
           "parentId": "1",
           "children": [],
-          "createdAt": "2024-01-21T10:00:00Z",
-          "updatedAt": "2024-01-21T10:00:00Z"
+          "createdAt": "2026-01-21T10:00:00Z",
+          "updatedAt": "2026-01-21T10:00:00Z"
         }
       ],
-      "createdAt": "2024-01-21T10:00:00Z",
-      "updatedAt": "2024-01-21T10:00:00Z"
+      "createdAt": "2026-01-21T10:00:00Z",
+      "updatedAt": "2026-01-21T10:00:00Z"
     }
   ]
 }
@@ -84,12 +84,12 @@ curl -X GET http://localhost:8080/api/menus/1
         "order": 0,
         "parentId": "1",
         "children": [],
-        "createdAt": "2024-01-21T10:00:00Z",
-        "updatedAt": "2024-01-21T10:00:00Z"
+        "createdAt": "2026-01-21T10:00:00Z",
+        "updatedAt": "2026-01-21T10:00:00Z"
       }
     ],
-    "createdAt": "2024-01-21T10:00:00Z",
-    "updatedAt": "2024-01-21T10:00:00Z"
+    "createdAt": "2026-01-21T10:00:00Z",
+    "updatedAt": "2026-01-21T10:00:00Z"
   }
 }
 ```
@@ -120,8 +120,8 @@ curl -X POST http://localhost:8080/api/menus \
     "depth": 1,
     "order": 1,
     "parentId": null,
-    "createdAt": "2024-01-21T12:30:00Z",
-    "updatedAt": "2024-01-21T12:30:00Z"
+    "createdAt": "2026-01-21T12:30:00Z",
+    "updatedAt": "2026-01-21T12:30:00Z"
   }
 }
 ```
@@ -153,8 +153,8 @@ curl -X POST http://localhost:8080/api/menus \
     "depth": 2,
     "order": 1,
     "parentId": "1",
-    "createdAt": "2024-01-21T12:35:00Z",
-    "updatedAt": "2024-01-21T12:35:00Z"
+    "createdAt": "2026-01-21T12:35:00Z",
+    "updatedAt": "2026-01-21T12:35:00Z"
   }
 }
 ```
@@ -185,8 +185,8 @@ curl -X PUT http://localhost:8080/api/menus/1 \
     "depth": 1,
     "order": 0,
     "parentId": null,
-    "createdAt": "2024-01-21T10:00:00Z",
-    "updatedAt": "2024-01-21T12:40:00Z"
+    "createdAt": "2026-01-21T10:00:00Z",
+    "updatedAt": "2026-01-21T12:40:00Z"
   }
 }
 ```
@@ -216,8 +216,8 @@ curl -X PATCH http://localhost:8080/api/menus/1-1/move \
     "depth": 2,
     "order": 0,
     "parentId": "2",
-    "createdAt": "2024-01-21T10:00:00Z",
-    "updatedAt": "2024-01-21T12:45:00Z"
+    "createdAt": "2026-01-21T10:00:00Z",
+    "updatedAt": "2026-01-21T12:45:00Z"
   }
 }
 ```
@@ -247,8 +247,8 @@ curl -X PATCH http://localhost:8080/api/menus/1-1/move \
     "depth": 1,
     "order": 0,
     "parentId": null,
-    "createdAt": "2024-01-21T10:00:00Z",
-    "updatedAt": "2024-01-21T12:50:00Z"
+    "createdAt": "2026-01-21T10:00:00Z",
+    "updatedAt": "2026-01-21T12:50:00Z"
   }
 }
 ```
@@ -278,8 +278,8 @@ curl -X PATCH http://localhost:8080/api/menus/1/reorder \
     "depth": 1,
     "order": 2,
     "parentId": null,
-    "createdAt": "2024-01-21T10:00:00Z",
-    "updatedAt": "2024-01-21T12:55:00Z"
+    "createdAt": "2026-01-21T10:00:00Z",
+    "updatedAt": "2026-01-21T12:55:00Z"
   }
 }
 ```

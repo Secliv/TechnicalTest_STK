@@ -2,7 +2,7 @@
 
 A quick lookup guide for common tasks and commands.
 
-## 🚀 Getting Started (60 seconds)
+## Getting Started (60 seconds)
 
 ```bash
 # 1. Install dependencies
@@ -15,7 +15,7 @@ pnpm dev
 http://localhost:8080
 ```
 
-## 📖 Documentation
+## Documentation
 
 | Document | Purpose |
 |----------|---------|
@@ -25,7 +25,7 @@ http://localhost:8080
 | **IMPLEMENTATION_SUMMARY.md** | What was built and status |
 | **This file** | Quick reference |
 
-## 🎯 Common Tasks
+## Common Tasks
 
 ### Development
 ```bash
@@ -72,7 +72,7 @@ pnpm docker:run
 pnpm docker:compose
 ```
 
-## 🔌 API Endpoints
+## API Endpoints
 
 ### Base URL
 ```
@@ -91,7 +91,7 @@ PATCH  /menus/:id/reorder  - Reorder menu
 GET    /docs               - Swagger documentation
 ```
 
-## 📝 Quick Examples
+## Quick Examples
 
 ### Create Menu (cURL)
 ```bash
@@ -127,7 +127,7 @@ function MyComponent() {
 }
 ```
 
-## 📁 File Structure
+## File Structure
 
 ```
 client/              - React frontend
@@ -143,7 +143,7 @@ shared/              - Shared types
 prisma/              - Database config
 ```
 
-## 🧪 Testing
+## Testing
 
 ```bash
 # Run all tests
@@ -160,20 +160,20 @@ pnpm vitest --coverage
 ```
 
 ### Test Results
-- ✅ 27 tests passing
-- ✅ 22 MenuService tests
-- ✅ 5 utility tests
-- ⏱️ ~1.5 seconds
+- 27 tests passing
+- 22 MenuService tests
+- 5 utility tests
+- Approximately 1.5 seconds
 
-## 🔐 Environment Variables
+## Environment Variables
 
 ```env
-DATABASE_URL="file:./prisma/dev.db"
+DATABASE_URL="postgresql://user:password@localhost:5432/menutree"
 PORT=8080
 NODE_ENV=development
 ```
 
-## 🐛 Troubleshooting
+## Troubleshooting
 
 ### Port already in use
 ```bash
@@ -200,17 +200,17 @@ pnpm typecheck
 pnpm format.fix
 ```
 
-## 📊 Performance
+## Performance
 
 | Operation | Time |
 |-----------|------|
-| Dev start | ~5s |
-| Build | ~6s |
-| Tests | ~1.5s |
-| TypeCheck | ~2s |
-| API call | <10ms |
+| Dev start | Approximately 5s |
+| Build | Approximately 6s |
+| Tests | Approximately 1.5s |
+| TypeCheck | Approximately 2s |
+| API call | Less than 10ms |
 
-## 🚀 Deployment
+## Deployment
 
 ### Vercel
 ```bash
@@ -237,18 +237,18 @@ pnpm build
 pnpm start
 ```
 
-## 📚 Technology Stack
+## Technology Stack
 
 | Layer | Technology |
 |-------|------------|
 | Frontend | React 18, TypeScript, Zustand |
 | Backend | Express, TypeScript |
 | Styling | TailwindCSS, Radix UI |
-| Database | Prisma, SQLite |
+| Database | Prisma, PostgreSQL |
 | Testing | Vitest |
 | Container | Docker |
 
-## 🎓 Learning Resources
+## Learning Resources
 
 - [React Docs](https://react.dev)
 - [Express Guide](https://expressjs.com)
@@ -256,7 +256,7 @@ pnpm start
 - [Zustand Docs](https://github.com/pmndrs/zustand)
 - [Zod Docs](https://zod.dev)
 
-## 💡 Tips
+## Tips
 
 ### Keep console clean
 ```bash
@@ -272,14 +272,11 @@ Prettier is configured to auto-format on save in VS Code
 
 ### Database reset
 ```bash
-# Remove database file
-rm prisma/dev.db
-
-# Recreate
-pnpm dev
+# Remove database and recreate
+pnpm prisma db push --force-reset
 ```
 
-## ⚡ Keyboard Shortcuts (VS Code)
+## Keyboard Shortcuts (VS Code)
 
 | Shortcut | Action |
 |----------|--------|
@@ -288,7 +285,7 @@ pnpm dev
 | `F5` | Debug |
 | `Cmd/Ctrl + Shift + D` | Go to definition |
 
-## 🔍 Debugging
+## Debugging
 
 ### Browser DevTools
 - React DevTools extension
@@ -310,7 +307,7 @@ console.log('state:', state);
 console.log('API call:', req.method, req.path);
 ```
 
-## 📞 Support
+## Support
 
 ### API Documentation
 ```
@@ -323,15 +320,15 @@ http://localhost:8080/api/docs
 3. See API_EXAMPLES.md for usage
 4. Review test files for examples
 
-## 🎉 Success Checklist
+## Success Checklist
 
-- [x] Dependencies installed
-- [x] Development server running
-- [x] Tests passing
-- [x] TypeScript checking passes
-- [x] API responding
-- [x] UI interactive
-- [x] Build successful
+- Dependencies installed
+- Development server running
+- Tests passing
+- TypeScript checking passes
+- API responding
+- UI interactive
+- Build successful
 
 ## Next Steps
 
@@ -343,4 +340,4 @@ http://localhost:8080/api/docs
 
 ---
 
-**Version 1.0.0** | January 21, 2024
+**Version 1.0.0** | January 2026

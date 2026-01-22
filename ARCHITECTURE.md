@@ -5,52 +5,52 @@
 This is a full-stack hierarchical menu management system built with React and Express, designed with clear separation of concerns and scalability in mind.
 
 ```
-┌─────────────────────────────────────────────────────────────┐
-│                      Client (React/TypeScript)               │
-├─────────────────────────────────────────────────────────────┤
-│  ┌──────────────────────────────────────────────────────┐   │
-│  │              React Components Layer                   │   │
-│  │  ├─ MenuTree.tsx      (Tree rendering & interaction) │   │
-│  │  ├─ MenuForm.tsx      (Details display)              │   │
-│  │  └─ Sidebar.tsx       (Navigation)                   │   │
-│  └──────────────────────────────────────────────────────┘   │
-│  ┌──────────────────────────────────────────────────────┐   │
-│  │           Zustand Store (State Management)            │   │
-│  │  ├─ menus[]          (Menu data)                      │   │
-│  │  ├─ selectedMenuId   (Active menu)                   │   │
-│  │  ├─ isLoading        (Loading state)                 │   │
-│  │  └─ actions          (CRUD operations)               │   │
-│  └──────────────────────────────────────────────────────┘   │
-├─────────────────────────────────────────────────────────────┤
-│                    HTTP/REST API Layer                      │
-├─────────────────────────────────────────────────────────────┤
-│                   Server (Express/TypeScript)               │
-├─────────────────────────────────────────────────────────────┤
-│  ┌──────────────────────────────────────────────────────┐   │
-│  │              Route Handlers Layer                     │   │
-│  │  ├─ GET    /api/menus       (Fetch all)              │   │
-│  │  ├─ GET    /api/menus/:id   (Fetch one)              │   │
-│  │  ├─ POST   /api/menus       (Create)                 │   │
-│  │  ├─ PUT    /api/menus/:id   (Update)                 │   │
-│  │  ├─ DELETE /api/menus/:id   (Delete)                 │   │
-│  │  ├─ PATCH  /api/menus/:id/move      (Move)           │   │
-│  │  └─ PATCH  /api/menus/:id/reorder   (Reorder)        │   │
-│  └──────────────────────────────────────────────────────┘   │
-│  ┌──────────────────────────────────────────────────────┐   │
-│  │           Business Logic (Service Layer)              │   │
-│  │  ├─ MenuService.createMenu()                         │   │
-│  │  ├─ MenuService.updateMenu()                         │   │
-│  │  ├─ MenuService.deleteMenu()                         │   │
-│  │  ├─ MenuService.moveMenu()                           │   │
-│  │  ├─ MenuService.reorderMenu()                        │   │
-│  │  └─ MenuService.getAllMenus()                        │   │
-│  └──────────────────────────────────────────────────────┘   │
-│  ┌──────────────────────────────────────────────────────┐   │
-│  │              Data Storage Layer                       │   │
-│  │  ├─ PostgreSQL Database                              │   │
-│  │  └─ Prisma ORM (v5.22.0)                             │   │
-│  └──────────────────────────────────────────────────────┘   │
-└─────────────────────────────────────────────────────────────┘
++-------------------------------------------------------------+
+|                      Client (React/TypeScript)               |
++-------------------------------------------------------------+
+|  +--------------------------------------------------------+  |
+|  |              React Components Layer                     |  |
+|  |  - MenuTree.tsx      (Tree rendering and interaction)  |  |
+|  |  - MenuForm.tsx      (Details display)                 |  |
+|  |  - Sidebar.tsx       (Navigation)                      |  |
+|  +--------------------------------------------------------+  |
+|  +--------------------------------------------------------+  |
+|  |           Zustand Store (State Management)              |  |
+|  |  - menus[]          (Menu data)                        |  |
+|  |  - selectedMenuId   (Active menu)                      |  |
+|  |  - isLoading        (Loading state)                    |  |
+|  |  - actions          (CRUD operations)                  |  |
+|  +--------------------------------------------------------+  |
++-------------------------------------------------------------+
+|                    HTTP/REST API Layer                       |
++-------------------------------------------------------------+
+|                   Server (Express/TypeScript)                |
++-------------------------------------------------------------+
+|  +--------------------------------------------------------+  |
+|  |              Route Handlers Layer                       |  |
+|  |  - GET    /api/menus       (Fetch all)                 |  |
+|  |  - GET    /api/menus/:id   (Fetch one)                 |  |
+|  |  - POST   /api/menus       (Create)                    |  |
+|  |  - PUT    /api/menus/:id   (Update)                    |  |
+|  |  - DELETE /api/menus/:id   (Delete)                    |  |
+|  |  - PATCH  /api/menus/:id/move      (Move)              |  |
+|  |  - PATCH  /api/menus/:id/reorder   (Reorder)           |  |
+|  +--------------------------------------------------------+  |
+|  +--------------------------------------------------------+  |
+|  |           Business Logic (Service Layer)                |  |
+|  |  - MenuService.createMenu()                            |  |
+|  |  - MenuService.updateMenu()                            |  |
+|  |  - MenuService.deleteMenu()                            |  |
+|  |  - MenuService.moveMenu()                              |  |
+|  |  - MenuService.reorderMenu()                           |  |
+|  |  - MenuService.getAllMenus()                           |  |
+|  +--------------------------------------------------------+  |
+|  +--------------------------------------------------------+  |
+|  |              Data Storage Layer                         |  |
+|  |  - PostgreSQL Database                                 |  |
+|  |  - Prisma ORM (v5.22.0)                                |  |
+|  +--------------------------------------------------------+  |
++-------------------------------------------------------------+
 ```
 
 ## Component Architecture
@@ -114,15 +114,20 @@ interface MenuStore {
 ### State Flow
 ```
 User Action
-    ↓
+    |
+    v
 Component calls store action
-    ↓
+    |
+    v
 Action calls API (fetch/async)
-    ↓
+    |
+    v
 API returns data
-    ↓
+    |
+    v
 Store updates state
-    ↓
+    |
+    v
 Component re-renders (React subscription)
 ```
 
@@ -199,48 +204,67 @@ interface MenuItem {
 ### Creating a Menu Item
 ```
 User clicks "Add" button
-    ↓
+    |
+    v
 MenuTree opens "Add Dialog"
-    ↓
+    |
+    v
 User enters name and label
-    ↓
+    |
+    v
 User clicks "Create Menu"
-    ↓
+    |
+    v
 Store calls createMenu(input)
-    ↓
+    |
+    v
 fetch POST /api/menus
-    ↓
+    |
+    v
 Express route validates input
-    ↓
+    |
+    v
 MenuService.createMenu() creates item
-    ↓
-In-memory store updated
-    ↓
+    |
+    v
+PostgreSQL database updated
+    |
+    v
 Response returned to client
-    ↓
+    |
+    v
 Store calls fetchMenus() to refresh
-    ↓
+    |
+    v
 Menus list updated
-    ↓
+    |
+    v
 Dialog closed, tree re-rendered
 ```
 
 ### Moving a Menu Item
 ```
 User drags menu to new parent (future)
-    ↓
+    |
+    v
 Store calls moveMenu(id, newParentId)
-    ↓
+    |
+    v
 fetch PATCH /api/menus/:id/move
-    ↓
+    |
+    v
 Express validates parent exists
-    ↓
+    |
+    v
 MenuService.moveMenu() updates item
-    ↓
+    |
+    v
 Depth recalculated for descendants
-    ↓
+    |
+    v
 Response returned
-    ↓
+    |
+    v
 Tree refreshed with new structure
 ```
 
@@ -286,8 +310,8 @@ if (!validationResult.success) {
 
 ### Error Categories
 - `VALIDATION_ERROR` (400): Invalid input
-- `NOT_FOUND` (404): Resource doesn't exist
-- `PARENT_NOT_FOUND` (404): Parent menu doesn't exist
+- `NOT_FOUND` (404): Resource does not exist
+- `PARENT_NOT_FOUND` (404): Parent menu does not exist
 - `INVALID_OPERATION` (400): Invalid state transition
 - `INTERNAL_SERVER_ERROR` (500): Server error
 
@@ -315,10 +339,10 @@ try {
 4. **Dialog lazy loading**: Dialogs only render when needed
 
 ### Backend Optimization
-1. **In-memory storage**: O(1) lookups with Map
+1. **Database queries**: Indexed lookups with Prisma
 2. **Tree building**: O(n) tree construction on GET
 3. **Depth updates**: O(n) for descendant updates (necessary)
-4. **Indexing**: Ready for database queries
+4. **Indexing**: Database indexes on `parentId`, `order`
 
 ### Caching Opportunities
 - Client-side: React Query ready integration
@@ -328,14 +352,13 @@ try {
 ## Scalability Architecture
 
 ### Current Implementation
-- In-memory storage (single process)
-- Suitable for: Development, small deployments
+- PostgreSQL database with Prisma ORM
+- Suitable for development and production deployments
 
 ### For Production Scale
-1. **Database Migration**
-   - Replace Map with database
-   - Use Prisma ORM
+1. **Database Optimization**
    - Add indexes on `parentId`, `order`
+   - Query optimization for large trees
 
 2. **Caching Layer**
    - Redis for tree structure
@@ -364,9 +387,9 @@ try {
 - Audit logging ready
 
 ### Current Implementation
-- Public API (for demo)
+- Public API (for demonstration)
 - Input validation
-- Error messages don't expose internals
+- Error messages do not expose internals
 
 ## Testing Architecture
 
@@ -386,7 +409,7 @@ try {
 ### Setup
 ```bash
 pnpm test              # Run once
-pnpm test:watch       # Watch mode
+pnpm test:watch        # Watch mode
 ```
 
 ## Deployment Architecture
@@ -394,29 +417,33 @@ pnpm test:watch       # Watch mode
 ### Development
 ```
 pnpm dev
-  ↓
+  |
+  v
 Vite dev server (port 5173 or 8080)
-  ↓
+  |
+  v
 Express backend (same port)
-  ↓
+  |
+  v
 Hot reload on changes
 ```
 
 ### Production Build
 ```
 pnpm build
-  ├─ build:client → dist/spa/
-  └─ build:server → dist/server/
+  - build:client -> dist/spa/
+  - build:server -> dist/server/
 ```
 
 ### Docker
 ```
 Dockerfile (multi-stage)
-  ├─ Builder stage: Install & build
-  └─ Runtime stage: Minimal image
+  - Builder stage: Install and build
+  - Runtime stage: Minimal image
 
 docker-compose.yml
-  └─ Single service setup
+  - Application service
+  - PostgreSQL database service
 ```
 
 ## Technology Rationale
@@ -439,10 +466,10 @@ docker-compose.yml
 
 ## Future Enhancements
 
-### Phase 1: Database ✅
-- ✅ Prisma ORM configured
-- ✅ PostgreSQL integration
-- ✅ Data persistence ready
+### Phase 1: Database (Completed)
+- Prisma ORM configured
+- PostgreSQL integration
+- Data persistence ready
 
 ### Phase 2: Advanced Features
 - Search/filter functionality
@@ -462,11 +489,11 @@ docker-compose.yml
 ## Conclusion
 
 This architecture provides:
-- ✅ Clear separation of concerns
-- ✅ Scalability through layers
-- ✅ Type safety throughout
-- ✅ Easy testing
-- ✅ Production-ready basics
-- ✅ Clear migration path
+- Clear separation of concerns
+- Scalability through layers
+- Type safety throughout
+- Easy testing
+- Production-ready basics
+- Clear migration path
 
 The system is designed to be simple initially but scalable for production use.

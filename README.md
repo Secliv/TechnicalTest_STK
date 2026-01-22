@@ -5,9 +5,9 @@ A production-ready full-stack application implementing a hierarchical menu tree 
 ![Status](https://img.shields.io/badge/Status-Production%20Ready-brightgreen)
 ![License](https://img.shields.io/badge/License-MIT-blue)
 
-## 🎯 Overview
+## Overview
 
-This application provides a complete menu management system with:
+This application provides a complete menu management system with the following capabilities:
 
 - **Hierarchical Menu Structure**: Support for unlimited depth nested menus
 - **RESTful API**: Complete CRUD operations with validation
@@ -17,7 +17,7 @@ This application provides a complete menu management system with:
 - **API Documentation**: Built-in Swagger/OpenAPI documentation
 - **Docker Support**: Production-ready Docker setup
 
-## 🛠 Tech Stack
+## Tech Stack
 
 ### Frontend
 - **React 18** - UI library
@@ -36,10 +36,10 @@ This application provides a complete menu management system with:
 - **Swagger UI** - API documentation
 
 ### Database
-- **SQLite** - Lightweight database (can be swapped for PostgreSQL/MySQL)
-- **Prisma** - ORM (configured for future migration)
+- **PostgreSQL** - Production database
+- **Prisma** - ORM for type-safe database access
 
-## 📋 Project Structure
+## Project Structure
 
 ```
 .
@@ -65,8 +65,7 @@ This application provides a complete menu management system with:
 ├── shared/                    # Shared types
 │   └── api.ts                 # API interfaces
 ├── prisma/                    # Database
-│   ├── schema.prisma          # Schema definition
-│   └── dev.db                 # SQLite database
+│   └── schema.prisma          # Schema definition
 ├── package.json               # Dependencies
 ├── vite.config.ts             # Vite config
 ├── vite.config.server.ts      # Server build config
@@ -75,13 +74,14 @@ This application provides a complete menu management system with:
 └── README.md                  # This file
 ```
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Prerequisites
 
 - Node.js 18+
 - pnpm (preferred) or npm
 - Docker (optional, for containerized deployment)
+- PostgreSQL (for production)
 
 ### Development Setup
 
@@ -108,7 +108,7 @@ This application provides a complete menu management system with:
 
    The application will be available at `http://localhost:8080`
 
-## 📝 API Documentation
+## API Documentation
 
 ### Endpoints
 
@@ -132,8 +132,8 @@ Returns all menu items in tree structure.
       "order": 0,
       "parentId": null,
       "children": [],
-      "createdAt": "2024-01-21T10:00:00Z",
-      "updatedAt": "2024-01-21T10:00:00Z"
+      "createdAt": "2026-01-21T10:00:00Z",
+      "updatedAt": "2026-01-21T10:00:00Z"
     }
   ]
 }
@@ -207,30 +207,30 @@ Content-Type: application/json
 
 Interactive API documentation is available at: `http://localhost:8080/api/docs`
 
-## 🎨 Features
+## Features
 
-### Core Features ✅
-- [x] Display menu tree in hierarchical structure
-- [x] Add new menu items at any level
-- [x] Edit existing menu items inline or via modal
-- [x] Delete menu items with confirmation
-- [x] Expand/collapse nested menu items
-- [x] RESTful API with proper error handling
-- [x] Input validation using Zod
-- [x] TypeScript throughout
-- [x] Responsive design
+### Core Features
+- Display menu tree in hierarchical structure
+- Add new menu items at any level
+- Edit existing menu items inline or via modal
+- Delete menu items with confirmation
+- Expand/collapse nested menu items
+- RESTful API with proper error handling
+- Input validation using Zod
+- TypeScript throughout
+- Responsive design
 
-### Bonus Features ✅
-- [x] State management with Zustand
-- [x] Drag-and-drop ready architecture
-- [x] Docker support (development & production)
-- [x] Swagger/OpenAPI documentation
-- [x] Service layer pattern
-- [x] Custom dialogs for CRUD operations
-- [x] Menu details panel
-- [x] Real-time UI updates
+### Additional Features
+- State management with Zustand
+- Drag-and-drop ready architecture
+- Docker support (development and production)
+- Swagger/OpenAPI documentation
+- Service layer pattern
+- Custom dialogs for CRUD operations
+- Menu details panel
+- Real-time UI updates
 
-## 📦 Available Scripts
+## Available Scripts
 
 ```bash
 # Development
@@ -251,10 +251,10 @@ pnpm test             # Run tests (Vitest)
 
 # Database
 pnpm prisma db push   # Push schema to database
-pnpm prisma studio   # Open Prisma Studio
+pnpm prisma studio    # Open Prisma Studio
 ```
 
-## 🐳 Docker Setup
+## Docker Setup
 
 ### Development with Docker
 
@@ -275,11 +275,11 @@ docker build -t menu-tree-app .
 # Run container
 docker run -p 8080:8080 \
   -e NODE_ENV=production \
-  -e DATABASE_URL="file:./prisma/dev.db" \
+  -e DATABASE_URL="postgresql://user:password@host:5432/database" \
   menu-tree-app
 ```
 
-## 🏗 Architecture
+## Architecture
 
 ### Frontend Architecture
 
@@ -295,27 +295,27 @@ docker run -p 8080:8080 \
 - **Route Handlers**: Express request handlers
 - **Validation**: Zod schemas for input validation
 - **Error Handling**: Consistent error responses
-- **In-Memory Storage**: Current implementation (database-ready)
+- **Database**: PostgreSQL with Prisma ORM
 
-## 🔄 Data Flow
+## Data Flow
 
 ```
-User Action → React Component → Zustand Store
-                                     ↓
+User Action -> React Component -> Zustand Store
+                                     |
                             Fetch API Request
-                                     ↓
+                                     |
                             Express Route Handler
-                                     ↓
+                                     |
                             Menu Service (Business Logic)
-                                     ↓
-                            In-Memory Store / Database
-                                     ↓
+                                     |
+                            PostgreSQL Database
+                                     |
                             Response to Client
-                                     ↓
-                            Store Update → Re-render
+                                     |
+                            Store Update -> Re-render
 ```
 
-## 🛡 Error Handling
+## Error Handling
 
 All API endpoints return consistent error responses:
 
@@ -331,7 +331,7 @@ Error Response Format:
 }
 ```
 
-## 🚀 Deployment
+## Deployment
 
 ### Netlify
 The app is ready for Netlify deployment:
@@ -362,27 +362,26 @@ pnpm start
 pm2 start dist/server/node-build.mjs --name "menu-tree-app"
 ```
 
-## 📊 Performance Considerations
+## Performance Considerations
 
 - **Tree Rendering**: Optimized with React's reconciliation
 - **State Management**: Zustand is lightweight and performant
 - **Lazy Loading**: Ready for code splitting via dynamic imports
 - **Caching**: Ready for React Query integration
 
-## 🔮 Future Enhancements
+## Future Enhancements
 
-- [ ] Database integration (PostgreSQL/MySQL)
-- [ ] Authentication & Authorization
-- [ ] Drag-and-drop reordering UI
-- [ ] Full-text search functionality
-- [ ] Menu versioning & audit logs
-- [ ] Bulk operations
-- [ ] Advanced filtering
-- [ ] Export/Import functionality
-- [ ] Multi-language support
-- [ ] Performance metrics
+- Authentication and Authorization
+- Drag-and-drop reordering UI
+- Full-text search functionality
+- Menu versioning and audit logs
+- Bulk operations
+- Advanced filtering
+- Export/Import functionality
+- Multi-language support
+- Performance metrics
 
-## 📚 API Integration Guide
+## API Integration Guide
 
 ### Using Fetch API
 
@@ -422,7 +421,7 @@ function MyComponent() {
 }
 ```
 
-## 🧪 Testing
+## Testing
 
 Run the test suite:
 
@@ -430,41 +429,41 @@ Run the test suite:
 pnpm test
 ```
 
-## 📝 Code Quality
+## Code Quality
 
 - **TypeScript**: Strict type checking
 - **Prettier**: Code formatting
 - **ESLint**: Linting (can be added)
 - **Zod**: Runtime validation
 
-## 🔐 Security Considerations
+## Security Considerations
 
 - Input validation with Zod
-- Error messages don't expose sensitive information
+- Error messages do not expose sensitive information
 - CORS enabled for same-origin requests
-- No sensitive data in database (in-memory for demo)
+- Database credentials managed via environment variables
 
-## 📄 License
+## License
 
 MIT License - feel free to use this project
 
-## 🤝 Contributing
+## Contributing
 
-Contributions are welcome! Please:
+Contributions are welcome. Please follow these steps:
 
 1. Fork the repository
 2. Create a feature branch
 3. Make your changes
 4. Submit a pull request
 
-## 📞 Support
+## Support
 
 For issues and questions:
 - Check the documentation
 - Review API examples
 - Check the Swagger docs at `/api/docs`
 
-## 🎓 Learning Resources
+## Learning Resources
 
 - [React Documentation](https://react.dev)
 - [Express.js Guide](https://expressjs.com)
@@ -474,6 +473,6 @@ For issues and questions:
 
 ---
 
-**Built with ❤️ using React, Express, and TypeScript**
+Built with React, Express, and TypeScript
 
-Version 1.0.0 - January 2024
+Version 1.0.0 - January 2026

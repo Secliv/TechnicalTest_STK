@@ -1,62 +1,62 @@
-# 🐳 Docker Compose - Quick Start
+# Docker Compose - Quick Start
 
-## 🚀 Start Application
+## Start Application
 
 ```bash
 cd "Technical Test - STK"
 docker-compose up -d
 ```
 
-## ✅ Verify It's Running
+## Verify It Is Running
 
 ```bash
 docker-compose ps
 # Should show: "Up X seconds (healthy)"
 ```
 
-## 🌐 Access Application
+## Access Application
 
 - **Frontend**: http://localhost:8080
 - **API Docs**: http://localhost:8080/api/docs
 - **Health Check**: http://localhost:8080/api/ping
 
-## 🛑 Stop Application
+## Stop Application
 
 ```bash
 docker-compose down
 ```
 
-## 🔄 Restart
+## Restart
 
 ```bash
 docker-compose restart
 ```
 
-## 📊 View Logs
+## View Logs
 
 ```bash
 docker-compose logs -f          # Follow logs
 docker-compose logs --tail=50   # Last 50 lines
 ```
 
-## 🔨 Rebuild
+## Rebuild
 
 ```bash
 docker-compose up -d --build
 ```
 
-## 🗑️ Clean Up
+## Clean Up
 
 ```bash
 docker-compose down -v          # Remove volumes too
 ```
 
-## ✨ Status
+## Status
 
-- ✅ Container: Running
-- ✅ API: http://localhost:8080/api
-- ✅ Frontend: http://localhost:8080
-- ✅ Database: SQLite (dev.db)
-- ✅ Health: Active
+- Container: Running
+- API: http://localhost:8080/api
+- Frontend: http://localhost:8080
+- Database: PostgreSQL
+- Health: Active
 
-**Ready to use! 🚀**
+**Ready to use.**
